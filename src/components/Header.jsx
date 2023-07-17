@@ -1,4 +1,4 @@
-const Header = ({ inputRef, displayInformation }) => {
+const Header = ({ inputRef, changeLocationValue }) => {
   return (
     <header>
       <input
@@ -6,7 +6,7 @@ const Header = ({ inputRef, displayInformation }) => {
         placeholder="Enter the name of the city"
         ref={inputRef}
       />
-      <button onClick={displayInformation}>Search</button>
+      <button onClick={changeLocationValue}>Search</button>
     </header>
   );
 };
