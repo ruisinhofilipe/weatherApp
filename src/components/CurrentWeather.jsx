@@ -1,5 +1,4 @@
-import countryList from "./countriesList.js";
-import { useState } from "react";
+import { convertTemperature, convertWind } from "./convertMeasures.js";
 
 const DisplayCurrentWeather = ({ weatherData }) => {
   const information = {
@@ -17,17 +16,14 @@ const DisplayCurrentWeather = ({ weatherData }) => {
     icon: weatherData.weather[0].icon,
     description: weatherData.weather[0].description,
     wind: weatherData.wind.speed,
-  };
-
-  const convertTemperature = (temp) => {
-    const temperature = Math.ceil(temp - 273.15);
-    return temperature;
+    humidity: weatherData.main.humidity,
   };
 
   return (
     <section className="currentWeatherContainer">
       <article className="currentWeatherDisplay-left">
         <h1>{information.name}</h1>
+        <p>{information.description}</p>
         <div className="icon-temp">
           <img
             src={`http://openweathermap.org/img/wn/${information.icon}@2x.png`}
@@ -35,13 +31,13 @@ const DisplayCurrentWeather = ({ weatherData }) => {
           />
           <p>{`${convertTemperature(information.temperature)}°C`}</p>
         </div>
-
-        <p>{information.description}</p>
-        <p>{`Feels like: ${convertTemperature(information.feelsLike)}°C`}</p>
       </article>
       <article className="currentWeatherDisplay-right">
+        <p>{`Feels like: ${convertTemperature(information.feelsLike)}°C`}</p>
         <p>{`H: ${convertTemperature(information.maxTemperature)}°C`}</p>
         <p>{`L: ${convertTemperature(information.minTemperature)}°C`}</p>
+        <p>{`Wind: ${convertWind(information.wind)} Km/h`}</p>
+        <p>{`Humidity: ${information.humidity} %`}</p>
       </article>
     </section>
   );
