@@ -1,3 +1,6 @@
+import countryList from "./countriesList.js";
+import { useState } from "react";
+
 const DisplayCurrentWeather = ({ weatherData }) => {
   const information = {
     name: weatherData.name,
@@ -22,9 +25,24 @@ const DisplayCurrentWeather = ({ weatherData }) => {
   };
 
   return (
-    <section>
-      <h1>{information.name}</h1>
-      <p>{convertTemperature(information.temperature)}</p>
+    <section className="currentWeatherContainer">
+      <article className="currentWeatherDisplay-left">
+        <h1>{information.name}</h1>
+        <div className="icon-temp">
+          <img
+            src={`http://openweathermap.org/img/wn/${information.icon}@2x.png`}
+            alt=""
+          />
+          <p>{`${convertTemperature(information.temperature)}°C`}</p>
+        </div>
+
+        <p>{information.description}</p>
+        <p>{`Feels like: ${convertTemperature(information.feelsLike)}°C`}</p>
+      </article>
+      <article className="currentWeatherDisplay-right">
+        <p>{`H: ${convertTemperature(information.maxTemperature)}°C`}</p>
+        <p>{`L: ${convertTemperature(information.minTemperature)}°C`}</p>
+      </article>
     </section>
   );
 };

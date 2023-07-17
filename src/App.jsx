@@ -36,9 +36,11 @@ function App() {
   return (
     <React.StrictMode>
       <Header inputRef={inputRef} changeLocationValue={changeLocationValue} />
-      {weatherData !== null ? (
-        <DisplayCurrentWeather weatherData={weatherData} />
-      ) : null}
+      <main>
+        {weatherData !== null ? (
+          <DisplayCurrentWeather weatherData={weatherData} />
+        ) : null}
+      </main>
     </React.StrictMode>
   );
 }
