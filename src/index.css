@@ -4,6 +4,18 @@
   box-sizing: content-box;
 }
 
+.root {
+  height: 100vh;
+  position: relative;
+}
+
+.backgroundImgContainer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
 .currentWeatherContainer {
   width: 100%;
   display: flex;
