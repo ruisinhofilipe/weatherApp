@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { weatherApiKey } from "./apikey";
 import axios from "axios";
 const WEEK_DAYS = [
@@ -11,9 +11,8 @@ const WEEK_DAYS = [
   "Sunday",
 ];
 
-// const daysFromApi = [];
-
 const Forecast = ({ latAndLon }) => {
+  const [list, setList] = useState([]);
   useEffect(() => {
     const fetchDataForecast = async () => {
       try {
@@ -23,9 +22,10 @@ const Forecast = ({ latAndLon }) => {
 
         const data = await response.data;
 
-        const list = data.list.filter((item) =>
+        const forecastFiveDays = data.list.filter((item) =>
           item.dt_txt.includes("12:00:00")
         );
+        setList(forecastFiveDays);
       } catch (error) {
         console.log(error);
       }
@@ -36,7 +36,17 @@ const Forecast = ({ latAndLon }) => {
     }
   }, [latAndLon]);
 
-  return <section>just a test</section>;
+  return (
+    <section>
+      {list.map((item, index) => {
+        return (
+          <article key={index}>
+            <p>{item.dt}</p>
+          </article>
+        );
+      })}
+    </section>
+  );
 };
 
 export default Forecast;
