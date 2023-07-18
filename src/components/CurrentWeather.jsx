@@ -1,5 +1,3 @@
-import { convertTemperature, convertWind } from "./convertMeasures.js";
-
 const DisplayCurrentWeather = ({ weatherData }) => {
   const information = {
     name: weatherData.name,
@@ -16,7 +14,6 @@ const DisplayCurrentWeather = ({ weatherData }) => {
     icon: weatherData.weather[0].icon,
     description: weatherData.weather[0].description,
     wind: weatherData.wind.speed,
-    humidity: weatherData.main.humidity,
   };
 
   return (
@@ -29,14 +26,14 @@ const DisplayCurrentWeather = ({ weatherData }) => {
             src={`http://openweathermap.org/img/wn/${information.icon}@2x.png`}
             alt=""
           />
-          <p>{`${convertTemperature(information.temperature)}°C`}</p>
+          <p>{`${information.temperature}°C`}</p>
         </div>
       </article>
       <article className="currentWeatherDisplay-right">
-        <p>{`Feels like: ${convertTemperature(information.feelsLike)}°C`}</p>
-        <p>{`H: ${convertTemperature(information.maxTemperature)}°C`}</p>
-        <p>{`L: ${convertTemperature(information.minTemperature)}°C`}</p>
-        <p>{`Wind: ${convertWind(information.wind)} Km/h`}</p>
+        <p>{`Feels like: ${information.feelsLike}°C`}</p>
+        <p>{`H: ${information.maxTemperature}°C`}</p>
+        <p>{`L: ${information.minTemperature}°C`}</p>
+        <p>{`Wind: ${information.wind} Km/h`}</p>
         <p>{`Humidity: ${information.humidity} %`}</p>
       </article>
     </section>
