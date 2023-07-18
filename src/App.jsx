@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-import Header from "./components/Header";
-import DisplayCurrentWeather from "./components/CurrentWeather";
+import Header from "./components/Header.jsx";
+import DisplayCurrentWeather from "./components/CurrentWeather.jsx";
+import { weatherApiKey } from "./components/apikey.js";
 
 function App() {
   const [location, setLocation] = useState(null);
@@ -18,7 +19,7 @@ function App() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=93c2204fb4e52ffc4acebdfafdedef39`
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${weatherApiKey}`
       );
       const data = await response.data;
       setWeatherData(data);
