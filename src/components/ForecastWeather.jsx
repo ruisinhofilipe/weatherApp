@@ -19,6 +19,7 @@ const Forecast = ({ latAndLon }) => {
           item.dt_txt.includes("12:00:00")
         );
         setList(forecastFiveDays);
+        console.log(forecastFiveDays);
       } catch (error) {
         console.log(error);
       }
@@ -34,13 +35,21 @@ const Forecast = ({ latAndLon }) => {
       {list.map((item, index) => {
         return (
           <article className="forecast-days-display" key={index}>
-            <p>{getCurrentDay(item.dt_txt)}</p>
+            <section className="forecast-info">
+              <p>{getCurrentDay(item.dt_txt)}</p>
+              <p>
+                {item.weather[0].main} - {`${item.main.temp}°C`}
+              </p>
+            </section>
             <img
               src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
               alt=""
             />
-            <p>{item.main.temp_max}</p>
-            <p>{item.main.temp_min}</p>
+            <p>{`Feels like: ${item.main.feels_like}°C`}</p>
+            <section className="high-low-temperatures">
+              <p>{`H: ${item.main.temp_max}°C`}</p>
+              <p>{`L: ${item.main.temp_min}°C`}</p>
+            </section>
           </article>
         );
       })}
@@ -49,11 +58,3 @@ const Forecast = ({ latAndLon }) => {
 };
 
 export default Forecast;
-
-//   const isInitialLoad = useRef(true);
-
-///// Stop for console in double
-// if (isInitialLoad.current) {
-//   isInitialLoad.current = false;
-//   return;
-// }

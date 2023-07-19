@@ -4,9 +4,44 @@
   box-sizing: content-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 .root {
   height: 100vh;
   position: relative;
+}
+
+header {
+  padding: 4rem;
+  background-color: #a2a8d3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header input {
+  width: 17rem;
+  border: none;
+  border-radius: 2px;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+header button {
+  font-size: 1.2rem;
+  background-color: #4671b1;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  color: white;
+  font-weight: bold;
+}
+
+header button:hover {
+  cursor: pointer;
+  background-color: #38598b;
 }
 
 .backgroundImgContainer {
@@ -21,7 +56,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+}
+
+.currentWeatherDisplay {
+  width: 100%;
+  display: flex;
+  /* justify-content: center;
+  align-items: center;
+  gap: 3rem; */
+  background-color: #95adbec9;
 }
 
 .currentWeatherDisplay-left {
@@ -36,7 +79,7 @@
 
 .forecast-days-container {
   display: flex;
-
+  padding: 4rem;
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -44,6 +87,30 @@
 
 .forecast-days-display {
   display: flex;
-  background-color: red;
-  width: 20%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #95adbec9;
+  width: calc(25% - 2rem);
+  padding: 0 2rem;
+  aspect-ratio: 1/1.5;
+  font-size: 1.4rem;
+}
+
+.forecast-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.forecast-info p:first-of-type {
+  font-weight: bold;
+}
+
+.high-low-temperatures {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.8rem;
 }
