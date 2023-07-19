@@ -38,6 +38,7 @@ function App() {
       );
       const data = await response.data;
       setWeatherData(data);
+      console.log(data);
       setLatAndLon({ lat: data.coord.lat, lon: data.coord.lon });
     } catch (error) {
       console.log(error);
@@ -52,11 +53,9 @@ function App() {
 
   return (
     <React.StrictMode>
-      {urlImg && <BackgroundImgContainer photoUrl={urlImg} />}
-
       <Header inputRef={inputRef} changeLocationValue={changeLocationValue} />
-
       <main>
+        {urlImg && <BackgroundImgContainer photoUrl={urlImg} />}
         {weatherData && <DisplayCurrentWeather weatherData={weatherData} />}
         {latAndLon && <Forecast latAndLon={latAndLon} />}
       </main>

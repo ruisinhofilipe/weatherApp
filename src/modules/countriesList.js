@@ -250,4 +250,10 @@ const countryList = {
   AX: "Åland Islands",
 };
 
-export default countryList;
+const checkIfExistsAndReturnCountry = (input) => {
+  const check = input in countryList;
+  const value = check ? countryList[input] : "UC";
+  return value;
+};
+
+export default checkIfExistsAndReturnCountry;

@@ -19,7 +19,6 @@ const Forecast = ({ latAndLon }) => {
           item.dt_txt.includes("12:00:00")
         );
         setList(forecastFiveDays);
-        console.log(forecastFiveDays);
       } catch (error) {
         console.log(error);
       }
