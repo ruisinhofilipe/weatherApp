@@ -1,18 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { weatherApiKey } from "./apikey";
+import { weatherApiKey } from "../modules/apikey";
 import axios from "axios";
-const WEEK_DAYS = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
+import getCurrentDay from "../modules/getCurrentDay";
 
 const Forecast = ({ latAndLon }) => {
   const [list, setList] = useState([]);
+
   useEffect(() => {
     const fetchDataForecast = async () => {
       try {
@@ -37,11 +30,17 @@ const Forecast = ({ latAndLon }) => {
   }, [latAndLon]);
 
   return (
-    <section>
+    <section className="forecast-days-container">
       {list.map((item, index) => {
         return (
-          <article key={index}>
-            <p>{item.dt}</p>
+          <article className="forecast-days-display" key={index}>
+            <p>{getCurrentDay(item.dt_txt)}</p>
+            <img
+              src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+              alt=""
+            />
+            <p>{item.main.temp_max}</p>
+            <p>{item.main.temp_min}</p>
           </article>
         );
       })}
@@ -52,9 +51,6 @@ const Forecast = ({ latAndLon }) => {
 export default Forecast;
 
 //   const isInitialLoad = useRef(true);
-
-//   const dayInAWeek = new Date().getDay();
-//   const hours = dayInAWeek.getHours();
 
 ///// Stop for console in double
 // if (isInitialLoad.current) {

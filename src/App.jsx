@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header.jsx";
 import DisplayCurrentWeather from "./components/CurrentWeather.jsx";
-import { weatherApiKey, unsplashApiKey } from "./components/apikey.js";
+import { weatherApiKey, unsplashApiKey } from "./modules/apikey.js";
 import BackgroundImgContainer from "./components/BackgroundImg";
 import Forecast from "./components/ForecastWeather";
 
