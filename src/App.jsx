@@ -7,7 +7,7 @@ import BackgroundImgContainer from "./components/BackgroundImg";
 import Forecast from "./components/ForecastWeather";
 
 function App() {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState("Porto");
   const [weatherData, setWeatherData] = useState(null);
   const [urlImg, setUrlImg] = useState(null);
   const [latAndLon, setLatAndLon] = useState(null);
@@ -26,7 +26,7 @@ function App() {
         `https://api.unsplash.com/search/photos?query=${location}&client_id=${unsplashApiKey}`
       );
       const data = await response.data;
-      setUrlImg(data.results[1].urls.full);
+      setUrlImg(data.results[1].urls.raw);
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +38,7 @@ function App() {
       );
       const data = await response.data;
       setWeatherData(data);
-      console.log(data);
+
       setLatAndLon({ lat: data.coord.lat, lon: data.coord.lon });
     } catch (error) {
       console.log(error);
@@ -56,8 +56,10 @@ function App() {
       <Header inputRef={inputRef} changeLocationValue={changeLocationValue} />
       <main>
         {urlImg && <BackgroundImgContainer photoUrl={urlImg} />}
-        {weatherData && <DisplayCurrentWeather weatherData={weatherData} />}
-        {latAndLon && <Forecast latAndLon={latAndLon} />}
+        <section className="container-weather">
+          {weatherData && <DisplayCurrentWeather weatherData={weatherData} />}
+          {latAndLon && <Forecast latAndLon={latAndLon} />}
+        </section>
       </main>
     </React.StrictMode>
   );

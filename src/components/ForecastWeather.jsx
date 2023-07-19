@@ -14,6 +14,7 @@ const Forecast = ({ latAndLon }) => {
         );
 
         const data = await response.data;
+        console.log(data.list);
 
         const forecastFiveDays = data.list.filter((item) =>
           item.dt_txt.includes("12:00:00")
@@ -30,29 +31,23 @@ const Forecast = ({ latAndLon }) => {
   }, [latAndLon]);
 
   return (
-    <section className="forecast-days-container">
+    <article className="forecast-days-container">
+      <h1>Weekly forecast</h1>
       {list.map((item, index) => {
         return (
-          <article className="forecast-days-display" key={index}>
-            <section className="forecast-info">
-              <p>{getCurrentDay(item.dt_txt)}</p>
-              <p>
-                {item.weather[0].main} - {`${item.main.temp}°C`}
-              </p>
-            </section>
+          <section className="forecast-days-display" key={index}>
+            <p className="title-day">
+              {getCurrentDay(item.dt_txt).split(" ")[0]}
+            </p>
             <img
               src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
               alt=""
             />
-            <p>{`Feels like: ${item.main.feels_like}°C`}</p>
-            <section className="high-low-temperatures">
-              <p>{`H: ${item.main.temp_max}°C`}</p>
-              <p>{`L: ${item.main.temp_min}°C`}</p>
-            </section>
-          </article>
+            <p>{`${Math.round(item.main.temp)}°C`}</p>
+          </section>
         );
       })}
-    </section>
+    </article>
   );
 };
 

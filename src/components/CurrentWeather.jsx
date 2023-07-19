@@ -6,10 +6,10 @@ const DisplayCurrentWeather = ({ weatherData }) => {
   const information = {
     name: weatherData.name,
     timezone: weatherData.timezone,
-    maxTemperature: weatherData.main.temp_max,
-    minTemperature: weatherData.main.temp_min,
-    temperature: weatherData.main.temp,
-    feelsLike: weatherData.main.feels_like,
+    maxTemperature: Math.round(weatherData.main.temp_max),
+    minTemperature: Math.round(weatherData.main.temp_min),
+    temperature: Math.round(weatherData.main.temp),
+    feelsLike: Math.round(weatherData.main.feels_like),
     humidity: weatherData.main.humidity,
     pressure: weatherData.main.pressure,
     sunrise: convertValueIntoHours(
@@ -17,7 +17,6 @@ const DisplayCurrentWeather = ({ weatherData }) => {
       weatherData.timezone
     ),
     sunset: convertValueIntoHours(weatherData.sys.sunset, weatherData.timezone),
-    visibility: weatherData.visibility,
     icon: weatherData.weather[0].icon,
     description: weatherData.weather[0].main,
     smallDescription: weatherData.weather[0].description,
@@ -36,6 +35,7 @@ const DisplayCurrentWeather = ({ weatherData }) => {
       </section>
       <article className="currentWeather-info">
         <section className="currentWeatherDisplay-left">
+          <p>{information.description}</p>
           <div className="icon-temp">
             <img
               src={`http://openweathermap.org/img/wn/${information.icon}@2x.png`}
@@ -43,39 +43,38 @@ const DisplayCurrentWeather = ({ weatherData }) => {
             />
             <p>{`${information.temperature}°C`}</p>
           </div>
-          <p>{information.description}</p>
         </section>
         <section className="currentWeatherDisplay-right">
           <div className="feelsLike">
-            <p className="p-lighter">{"Feels like:"}</p>
+            <p className="p-lighter">{"Feels like"}</p>
             <p className="p-darker">{`${information.feelsLike}°C`}</p>
           </div>
           <div className="pressure">
-            <p className="p-lighter">{"Pressure:"}</p>
+            <p className="p-lighter">{"Pressure"}</p>
             <p className="p-darker">{information.pressure}</p>
           </div>
           <div className="sunRise">
-            <p className="p-lighter">{"Sunrise:"}</p>
+            <p className="p-lighter">{"Sunrise"}</p>
             <p className="p-darker">{information.sunrise}</p>
           </div>
           <div className="sunSet">
-            <p className="p-lighter">{"Sunset:"}</p>
+            <p className="p-lighter">{"Sunset"}</p>
             <p className="p-darker">{information.sunset}</p>
           </div>
           <div className="minTemp">
-            <p className="p-lighter">{"Min:"}</p>
+            <p className="p-lighter">{"Min"}</p>
             <p className="p-darker">{`${information.minTemperature}°C`}</p>
           </div>
           <div className="maxTemp">
-            <p className="p-lighter">{"Max:"}</p>
+            <p className="p-lighter">{"Max"}</p>
             <p className="p-darker">{`${information.maxTemperature}°C`}</p>
           </div>
           <div className="wind">
-            <p className="p-lighter">{"Wind:"}</p>
+            <p className="p-lighter">{"Wind"}</p>
             <p className="p-darker">{`${information.wind} Km/h`}</p>
           </div>
           <div className="humidity">
-            <p className="p-lighter">{"Humidity:"}</p>
+            <p className="p-lighter">{"Humidity"}</p>
             <p className="p-darker">{`${information.humidity} %`}</p>
           </div>
         </section>
