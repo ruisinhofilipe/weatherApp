@@ -14,7 +14,6 @@ const Forecast = ({ latAndLon }) => {
         );
 
         const data = await response.data;
-        console.log(data.list);
 
         const forecastFiveDays = data.list.filter((item) =>
           item.dt_txt.includes("12:00:00")

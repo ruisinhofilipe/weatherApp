@@ -51,7 +51,7 @@ const DisplayCurrentWeather = ({ weatherData }) => {
           </div>
           <div className="pressure">
             <p className="p-lighter">{"Pressure"}</p>
-            <p className="p-darker">{information.pressure}</p>
+            <p className="p-darker">{`${information.pressure} hPa`}</p>
           </div>
           <div className="sunRise">
             <p className="p-lighter">{"Sunrise"}</p>
