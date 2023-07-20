@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState, useRef, useEffect } from "react";
-import { weatherApiKey, unsplashApiKey } from "./modules/apikey.js";
+// import { weatherApiKey, unsplashApiKey } from "./modules/apikey.js";
+import weatherApiKey from "./modules/apikey.js";
 import Header from "./components/Header.jsx";
 import DisplayCurrentWeather from "./components/CurrentWeather.jsx";
 import Footer from "./components/Footer.jsx";
-
 import BackgroundImgContainer from "./components/BackgroundImg";
 import Forecast from "./components/ForecastWeather";
 
@@ -22,18 +22,18 @@ function App() {
   };
 
   const fetchData = async () => {
-    // Get a photo from the location
-    try {
-      const response = await axios.get(
-        `https://api.unsplash.com/search/photos?query=${location}&client_id=${unsplashApiKey}`
-      );
+    // // Get a photo from the location
+    // try {
+    //   const response = await axios.get(
+    //     `https://api.unsplash.com/search/photos?query=${location}&client_id=${unsplashApiKey}`
+    //   );
 
-      const data = await response.data;
+    //   const data = await response.data;
 
-      setUrlImg(data.results[1].urls.raw);
-    } catch (error) {
-      console.log(error);
-    }
+    //   setUrlImg(data.results[1].urls.raw);
+    // } catch (error) {
+    //   console.log(error);
+    // }
 
     // Get current weather data from the location
     try {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { weatherApiKey } from "../modules/apikey";
+import weatherApiKey from "../modules/apikey";
 import axios from "axios";
 import getCurrentDay from "../modules/getCurrentDay";
 
