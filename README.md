@@ -27,7 +27,7 @@ This Weather App is a project developed during my web developer boot camp at BeC
 
 ## Demo
 
-You can try the Weather App live here: [App Demo](https://64b8fea1e7bba2624fe5694f--rui-silva-weatherapp.netlify.app/)
+You can try the Weather App live here: [App Demo](https://rui-silva-weatherapp.netlify.app/)
 
 ## Installation
 
